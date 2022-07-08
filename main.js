@@ -5,7 +5,7 @@ let notaMonitoreo
 
 for(let i=1;i<=3;i++){
 
-    notaMonitoreo = parseInt(prompt("Ingresa la nota del agente: " + nombreAgente));
+    notaMonitoreo = parseInt(prompt("Ingresa la nota " + i + " del agente: " + nombreAgente));
     nota = notaMonitoreo + nota ;
 
              
