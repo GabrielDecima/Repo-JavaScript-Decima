@@ -10,6 +10,9 @@ for(let i=1;i<=3;i++){
 
              
 }
+
+function calcular() {
+
 promedio = nota /3;
 
 if (promedio>85){
@@ -18,10 +21,9 @@ if (promedio>85){
 }else{
     alert("Tu promedio es " + promedio + " No alcanzaste el objetivo, tenemos que mejorar");
 }
-
-
    
+}
 
-
+calcular();
 
 
