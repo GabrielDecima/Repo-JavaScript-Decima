@@ -1,7 +1,49 @@
-/*!
-* Start Bootstrap - Shop Homepage v5.0.5 (https://startbootstrap.com/template/shop-homepage)
-* Copyright 2013-2022 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
-*/
-// This file is intentionally blank
-// Use this file to add JavaScript to your project
+let nombreUsuario="";
+
+function logueo(){
+
+while(nombreUsuario == ""){
+
+    nombreUsuario= prompt ("Ingrese nombre de usuario");
+
+    if (nombreUsuario != ""){
+
+    alert ("Bienvenido " + nombreUsuario)
+ }
+ else {
+    alert("No ingresaste un nombre, por favor volve, e ingresa un nombre")
+ }
+}
+
+}
+
+logueo();
+
+let producto=" ";
+let contador=0;
+let pregunta="";
+let lista="";
+
+
+function compra(){
+
+
+alert("Vamos a realizar una compra!!");
+
+
+while(pregunta !="NO") { 
+
+
+producto=prompt("Indicanos, ¿que producto quieres?")
+
+alert("Perfecto, haz agredado al carrito tus nuevas " + producto);
+
+pregunta = prompt("¿Quieres seguir comprando? (Ingresa SI - NO)");
+
+}
+
+alert("Gracias por confiar en nosotros, volve pronto");
+
+}
+compra();
+
