@@ -1,5 +1,7 @@
 let nombreUsuario="";
 
+
+
 function logueo(){
 
 while(nombreUsuario == ""){
@@ -19,13 +21,13 @@ while(nombreUsuario == ""){
 
 logueo();
 
-let producto=" ";
-let contador=0;
+
 let pregunta="";
-let lista="";
 
 
 function compra(){
+
+const carrito = [];
 
 
 alert("Vamos a realizar una compra!!");
@@ -33,17 +35,30 @@ alert("Vamos a realizar una compra!!");
 
 while(pregunta !="NO") { 
 
+const producto1 = { id:"1", marca: "adidas",talle: "46"}
+const producto2 = {id:"2" ,marca:"puma",talle:"42"}
+const producto3 = {id:"3" ,marca:"Nike",talle:"44"}
+const producto4 = {id:"4" ,marca:"Loto",talle:"38"}
 
-producto=prompt("Indicanos, ¿que producto quieres?")
 
-alert("Perfecto, haz agredado al carrito tus nuevas " + producto);
+carrito.push(prompt("Selecciona el producto,Tenemos disponibles las sigiuentes Zapatillas: " + (producto1.marca) + " - " + (producto2.marca) + " - " + (producto3.marca) + " - " + (producto4.marca)));
 
 pregunta = prompt("¿Quieres seguir comprando? (Ingresa SI - NO)");
 
 }
 
-alert("Gracias por confiar en nosotros, volve pronto");
+alert("Gracias por confiar en nosotros " + nombreUsuario);
+alert ("Añadiste al carrito las siguientes Zapas : " + carrito + " En total tenes " + carrito.length + " Productos") ;
+
+
 
 }
 compra();
+
+
+
+
+
+
+
 
