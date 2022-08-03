@@ -25,9 +25,9 @@
 // let pregunta="";
 
 
-// function compra(){
+// 
 
-// const carrito = [];
+
 
 
 // alert("Vamos a realizar una compra!!");
@@ -52,8 +52,13 @@
 
 
 
-// }
-// compra();
+// 
+
+
+function compra(){
+
+const carrito = [];
+
 
    const productos = [
    { id:"1", marca: "adidas",precio:"$10.000",talle: "46"},
@@ -72,8 +77,13 @@ productos.forEach((producto) => {
   <h5 class="fw-bolder">${producto.marca}</h5>
   <p>Talle ${producto.talle}</p>
    <div> ${producto.precio} </div>
-  <a class="boton" onClick ="agregarAlCarrito ('')" href="#">Agregar al Carrito</a>
+  <a class="boton" onClick ="" href="#">Agregar al Carrito</a>
   </div>
   </div>`;
 
 })
+
+
+
+}
+compra();
