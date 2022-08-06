@@ -55,16 +55,16 @@
 // 
 
 
-function compra(){
+
 
 const carrito = [];
 
 
    const productos = [
-   { id:"1", marca: "adidas",precio:"$10.000",talle: "46"},
-   {id:"2" ,marca:"puma",precio:"$8.000",talle:"42"},
-   {id:"3" ,marca:"Nike",precio:"$15.000",talle:"44",img:""},
-   {id:"4" ,marca:"Loto",precio:"$4.000",talle:"38"},
+   { id:"1", marca: "adidas",precio:10000 ,talle: "46"},
+   {id:"2" ,marca:"puma",precio:8000 ,talle:"42"},
+   {id:"3" ,marca:"Nike",precio:15000 ,talle:"44",img:""},
+   {id:"4" ,marca:"Loto",precio:4000 ,talle:"38"},
    ];
 
 
@@ -76,8 +76,8 @@ productos.forEach((producto) => {
   <div class="text-center">
   <h5 class="fw-bolder">${producto.marca}</h5>
   <p>Talle ${producto.talle}</p>
-   <div> ${producto.precio} </div>
-  <a class="boton" onClick ="" href="#">Agregar al Carrito</a>
+   <div>$ ${producto.precio} </div>
+  <a class="boton" id="${idButton}" data-id="${producto.id}">Agregar al Carrito</a>
   </div>
   </div>`;
 
@@ -85,5 +85,16 @@ productos.forEach((producto) => {
 
 
 
-}
-compra();
+productos.forEach((producto) => {
+   const idButton = `add-cart${producto.id}`
+   document.getElementById(idButton).addEventListener('click', () =>{
+      carrito.push(producto);
+     const totalCart = carrito.reduce((acumulador,producto) => acumulador + producto.precio, 0);
+
+      document.getElementById("cart-total").innerHTML = carrito.length + "- $"+totalCart;
+
+      })
+
+
+})
+
