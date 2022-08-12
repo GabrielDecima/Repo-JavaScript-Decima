@@ -32,7 +32,8 @@
 const carrito = [];
 
 
-   const productos = [
+
+const productos = [
    { id:"1", marca: "adidas",precio:10000 ,talle: "46"},
    {id:"2" ,marca:"puma",precio:8000 ,talle:"42"},
    {id:"3" ,marca:"Nike",precio:15000 ,talle:"44",img:""},
@@ -40,7 +41,7 @@ const carrito = [];
    ];
 
 
-productos.forEach((producto) => {
+  productos.forEach((producto) => {
    const idButton = `add-cart${producto.id}`
    document.getElementById("espacio-card").innerHTML += `<div class="card h-100 d-flex m-4">
    <img class="card-img-top" src="${producto.img}" alt="..." />
@@ -57,16 +58,21 @@ productos.forEach((producto) => {
 
 
 
+
 productos.forEach((producto) => {
    const idButton = `add-cart${producto.id}`
    document.getElementById(idButton).addEventListener('click', () =>{
       carrito.push(producto);
-     const totalCart = carrito.reduce((acumulador,producto) => acumulador + producto.precio, 0);
+     const total = carrito.reduce((acumulador,producto) => acumulador + producto.precio, 0);
 
-      document.getElementById("cart-total").innerHTML = carrito.length + "- $"+totalCart;
-
+      document.getElementById("cart-total").innerHTML = carrito.length + "- $"+ total;
+      localStorage.setItem("TotalCarrito",carrito.length)
+      localStorage.setItem("Carrito", JSON.stringify(carrito));
+      
+   
+      })
+      
       })
 
-
-})
-
+      
+      
