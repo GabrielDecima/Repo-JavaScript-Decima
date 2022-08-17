@@ -1,33 +1,38 @@
-// let nombreUsuario="";
+let nombreUsuario="";
 
+function logueo(){
 
+while(nombreUsuario == ""){
 
-// function logueo(){
+    nombreUsuario= prompt ("Ingrese nombre de usuario");
 
-// while(nombreUsuario == ""){
+    if (nombreUsuario != " "){
 
-//     nombreUsuario= prompt ("Ingrese nombre de usuario");
+      const Toast = Swal.mixin({
+         toast: true,
+         position: 'top-end',
+         showConfirmButton: false,
+         timer: 3000,
+         timerProgressBar: true,
+         didOpen: (toast) => {
+           toast.addEventListener('mouseenter', Swal.stopTimer)
+           toast.addEventListener('mouseleave', Swal.resumeTimer)
+         }
+       })
+       
+       Toast.fire({
+         icon: 'success',
+         title: 'Signed in successfully'
+       })
+ }
+ else {
+    alert("No ingresaste un nombre, por favor volve, e ingresa un nombre")
+ }
+}
 
-//     if (nombreUsuario != ""){
+}
 
-//     alert ("Bienvenido " + nombreUsuario)
-//  }
-//  else {
-//     alert("No ingresaste un nombre, por favor volve, e ingresa un nombre")
-//  }
-// }
-
-// }
-
-// logueo();
-
-
-// let pregunta="";
-
-
-// 
-
-
+//comienzo del carrito
 
 const carrito = [];
 
@@ -70,9 +75,24 @@ productos.forEach((producto) => {
       localStorage.setItem("Carrito", JSON.stringify(carrito));
       
    
-      })
-      
-      })
+   })
+       
+})
 
-      
-      
+function validacionDatos (){    
+Swal.fire({
+   title: 'Ingresar usuario',
+   
+   html:
+   '<span>Nombre <span/> <input id="swal-input1" class="swal2-input">' +
+       '<span>Email<span/><input id="swal-input2" class="swal2-input">',
+   icon: 'info',
+   confirmButtonText: 'Enviar'
+   
+   })      
+
+}
+
+validacionDatos();
+
+
