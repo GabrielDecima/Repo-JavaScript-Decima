@@ -1,37 +1,3 @@
-let nombreUsuario="";
-
-function logueo(){
-
-while(nombreUsuario == ""){
-
-    nombreUsuario= prompt ("Ingrese nombre de usuario");
-
-    if (nombreUsuario != " "){
-
-      const Toast = Swal.mixin({
-         toast: true,
-         position: 'top-end',
-         showConfirmButton: false,
-         timer: 3000,
-         timerProgressBar: true,
-         didOpen: (toast) => {
-           toast.addEventListener('mouseenter', Swal.stopTimer)
-           toast.addEventListener('mouseleave', Swal.resumeTimer)
-         }
-       })
-       
-       Toast.fire({
-         icon: 'success',
-         title: 'Signed in successfully'
-       })
- }
- else {
-    alert("No ingresaste un nombre, por favor volve, e ingresa un nombre")
- }
-}
-
-}
-
 //comienzo del carrito
 
 const carrito = [];
@@ -64,6 +30,7 @@ const productos = [
 
 
 
+
 productos.forEach((producto) => {
    const idButton = `add-cart${producto.id}`
    document.getElementById(idButton).addEventListener('click', () =>{
@@ -79,20 +46,66 @@ productos.forEach((producto) => {
        
 })
 
-function validacionDatos (){    
-Swal.fire({
-   title: 'Ingresar usuario',
+
+function log (){
+
+
+let nombreUsuario="";
    
-   html:
-   '<span>Nombre <span/> <input id="swal-input1" class="swal2-input">' +
-       '<span>Email<span/><input id="swal-input2" class="swal2-input">',
-   icon: 'info',
-   confirmButtonText: 'Enviar'
    
-   })      
+while(nombreUsuario == ""){
+
+    nombreUsuario= prompt ("Ingrese nombre de usuario");
+    
+
+    if (nombreUsuario != ""){
+
+      const Toast = Swal.mixin({
+         toast: true,
+         position: 'top-end',
+         showConfirmButton: false,
+         timer: 3000,
+         timerProgressBar: true,
+         didOpen: (toast) => {
+           toast.addEventListener('mouseenter', Swal.stopTimer)
+           toast.addEventListener('mouseleave', Swal.resumeTimer)
+         }
+       })
+       
+       Toast.fire({
+         icon: 'success',
+         title: 'Bienvenido'+ nombreUsuario
+       })
+      
+      
+      
+}
+ else {
+    alert("No ingresaste un nombre, por favor volve, e ingresa un nombre");
+   
+ }
+}
 
 }
 
-validacionDatos();
+
+
+
+// function validacionDatos (){    
+// Swal.fire({
+//    title: 'Ingresar usuario',
+   
+//    html:
+//    '<span>Nombre <span/> <input id="swal-input1" class="swal2-input">' +
+//        '<span>Email<span/><input id="swal-input2" class="swal2-input">',
+//    icon: 'info',
+//    confirmButtonText: 'Enviar'
+   
+//    })      
+
+// }
+
+// validacionDatos();
+
 
 
