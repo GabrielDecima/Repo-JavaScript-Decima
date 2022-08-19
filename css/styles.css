@@ -4511,7 +4511,7 @@ textarea.form-control-lg {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  width: 300px;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
@@ -4608,22 +4608,29 @@ textarea.form-control-lg {
 .card-img-top,
 .card-img-bottom {
   width: 100%;
+  margin: auto;
+  padding: auto;
+  border: solid 0.5px rgb(222, 212, 212);
+
 }
 
 .card-img,
 .card-img-top {
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
+  
 }
 
 .card-img,
 .card-img-bottom {
   border-bottom-right-radius: calc(0.25rem - 1px);
   border-bottom-left-radius: calc(0.25rem - 1px);
+  
 }
 
 .card-group > .card {
   margin-bottom: 0.75rem;
+  
 }
 @media (min-width: 576px) {
   .card-group {
