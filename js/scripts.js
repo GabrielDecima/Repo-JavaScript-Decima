@@ -1,7 +1,7 @@
 //comienzo del carrito
 
-const carrito = [];
 
+// Funcion para traer productos fon Fetch - Mercado Libre
 
 const consultarDatosProducto = () => {
    fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
@@ -11,40 +11,51 @@ const consultarDatosProducto = () => {
    informacion.results.forEach((producto) => {
 
    console.log(informacion.results);
-   const idButton = `add-cart${producto.id}`
+   const idButton = `add-cart-${producto.id}`
    acumuladorCards +=  `<div class= "card">
    <img src="${producto.thumbnail}">
    <h2>${producto.title}</h2>
    <h2>${producto.price}</h2>
-   <a class="boton" id=${idButton}>Agregar</a>
+   <button class="boton" id="${idButton}">Agregar</button>
    </div>`
    
 })
    document.getElementById('espacio-card').innerHTML = acumuladorCards;
    
    })
+ 
 }
 
 consultarDatosProducto();
 
 
+// Evento de agregar al carrito
 
-informacion.results.forEach((producto) => {
-   const idButton = `add-cart${producto.id}`
+const carrito = [];
+fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
+   .then((response) => response.json())
+   .then(informacion => {
+   informacion.results.forEach((producto) => {
+
+      const idButton = `add-cart-${producto.id}`
    document.getElementById(idButton).addEventListener('click', () =>{
+
       carrito.push(producto);
-     const total = carrito.reduce((acumulador,producto) => acumulador + producto.precio, 0);
+     const total = carrito.reduce((acumulador,producto) => acumulador + producto.price, 0);
 
       document.getElementById("cart-total").innerHTML = carrito.length + "- $"+ total;
       localStorage.setItem("TotalCarrito",carrito.length)
       localStorage.setItem("Carrito", JSON.stringify(carrito));
-      
-   
    })
-       
+   
 })
   
    
+ })
+
+
+
+
 
 
 
@@ -59,7 +70,7 @@ informacion.results.forEach((producto) => {
 // let nombreUsuario="";
    
    
-// while(nombreUsuario == ""){
+// while(nombreUsuario === ""){
 
 //     nombreUsuario= prompt ("Ingrese nombre de usuario");
     
@@ -82,8 +93,7 @@ informacion.results.forEach((producto) => {
 //          icon: 'success',
 //          title: 'Bienvenido'+ nombreUsuario
 //        })
-      
-      
+            
       
 // }
 //  else {
@@ -98,17 +108,7 @@ informacion.results.forEach((producto) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+// ---------------------------------------------------------------------------
 
 // function validacionDatos (){    
 // Swal.fire({
