@@ -1,3 +1,4 @@
+
 //comienzo del carrito
 
 
@@ -31,100 +32,88 @@ consultarDatosProducto();
 
 // Evento de agregar al carrito
 
-const carrito = [];
+const carrito = JSON.parse(localStorage.getItem("carrito")) ?? [] ; 
+const total = carrito.reduce((acumulador, producto) => acumulador + producto.price, 0);
+document.getElementById("cart-total").innerHTML = `${carrito.length} - $ ${total}`;
+
+
 fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
    .then((response) => response.json())
    .then(informacion => {
    informacion.results.forEach((producto) => {
 
-      const idButton = `add-cart-${producto.id}`
+   const idButton = `add-cart-${producto.id}`
    document.getElementById(idButton).addEventListener('click', () =>{
 
       carrito.push(producto);
-     const total = carrito.reduce((acumulador,producto) => acumulador + producto.price, 0);
-
-      document.getElementById("cart-total").innerHTML = carrito.length + "- $"+ total;
-      localStorage.setItem("TotalCarrito",carrito.length)
-      localStorage.setItem("Carrito", JSON.stringify(carrito));
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      localStorage.setItem("cantidadCarrito", JSON.stringify(carrito.length));
+      const total = carrito.reduce((acumulador,producto) => acumulador + producto.price, 0);
+      document.getElementById("cart-total").innerHTML = `${carrito.length} - $ ${total}`;  
+    
    })
-   
-})
+
+
   
-   
+ 
+})
+
  })
 
+ 
+ let funcionBoton = document.getElementById("boton-carrito")
+ funcionBoton.addEventListener('click', llamado)
+
+ function llamado(){
+
+   Swal.fire({
+      title: 'Carrito!',
+      html:`<div>${producto.title}</div>
+      <p>lorem lorem</p>`,
+
+    })
+ 
+}
 
 
-
-
-
-
-
-
-
-
-
-// function log (){
-
-
-// let nombreUsuario="";
    
+      
+   // while(nombreUsuario == ""){
    
-// while(nombreUsuario === ""){
+   //     nombreUsuario= prompt("Ingrese nombre de usuario");
+       
+   
+   //     if (nombreUsuario != ""){
+   //       Swal.fire(
+   //          'Good job!',
+   //          'You clicked the button!',
+   //          'success'
+   //        )
+         
+   // }
+   //  else {
+   //     alert("No ingresaste un nombre, por favor volve, e ingresa un nombre");
 
-//     nombreUsuario= prompt ("Ingrese nombre de usuario");
+   //  }
+   // }
+   
     
 
-//     if (nombreUsuario != ""){
 
-//       const Toast = Swal.mixin({
-//          toast: true,
-//          position: 'top-end',
-//          showConfirmButton: false,
-//          timer: 3000,
-//          timerProgressBar: true,
-//          didOpen: (toast) => {
-//            toast.addEventListener('mouseenter', Swal.stopTimer)
-//            toast.addEventListener('mouseleave', Swal.resumeTimer)
-//          }
-//        })
-       
-//        Toast.fire({
-//          icon: 'success',
-//          title: 'Bienvenido'+ nombreUsuario
-//        })
-            
+       // ---------------------------------------------------------------------------
+   
+   // function validacionDatos (){    
+
+   //    Swal.fire({
+   //       title: 'Ingresar usuario',
+         
+   //       html:
+   //       '<span>Nombre <span/> <input id="swal-input1" class="swal2-input">' +
+   //           '<span>Email<span/><input id="swal-input2" class="swal2-input">',
+   //       icon: 'info',
+   //       confirmButtonText: 'Enviar'
+         
+   //       })      
       
-// }
-//  else {
-//     alert("No ingresaste un nombre, por favor volve, e ingresa un nombre");
-   
-//  }
-// }
-
-// }
-
-
-
-
-
-// ---------------------------------------------------------------------------
-
-// function validacionDatos (){    
-// Swal.fire({
-//    title: 'Ingresar usuario',
-   
-//    html:
-//    '<span>Nombre <span/> <input id="swal-input1" class="swal2-input">' +
-//        '<span>Email<span/><input id="swal-input2" class="swal2-input">',
-//    icon: 'info',
-//    confirmButtonText: 'Enviar'
-   
-//    })      
-
-// }
-
-// validacionDatos();
-
-
-
+   //    }
+      
