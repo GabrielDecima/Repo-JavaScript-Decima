@@ -2,7 +2,7 @@
 //comienzo del carrito
 
 
-// Funcion para traer productos fon Fetch - Mercado Libre
+// Funcion para traer productos con Fetch - Mercado Libre
 
 const consultarDatosProducto = () => {
    fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
@@ -16,8 +16,8 @@ const consultarDatosProducto = () => {
    acumuladorCards +=  `<div class= "card">
    <img src="${producto.thumbnail}">
    <h2>${producto.title}</h2>
-   <h2>${producto.price}</h2>
-   <button class="boton" id="${idButton}">Agregar</button>
+   <h2>$ ${producto.price}</h2>
+   <button class="boton-agregar" id="${idButton}">Agregar</button>
    </div>`
    
 })
@@ -50,31 +50,22 @@ fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
       localStorage.setItem("cantidadCarrito", JSON.stringify(carrito.length));
       const total = carrito.reduce((acumulador,producto) => acumulador + producto.price, 0);
       document.getElementById("cart-total").innerHTML = `${carrito.length} - $ ${total}`;  
+
+
+      Swal.fire({
+         title: `Carrito: ${carrito.length} Productos` ,
+         html:`<div>Excelente! Agregaste tu nuevo par de zapatillas</div>`,
+   
+       })
     
    })
 
 
-  
- 
 })
 
  })
 
  
- let funcionBoton = document.getElementById("boton-carrito")
- funcionBoton.addEventListener('click', llamado)
-
- function llamado(){
-
-   Swal.fire({
-      title: 'Carrito!',
-      html:`<div>${producto.title}</div>
-      <p>lorem lorem</p>`,
-
-    })
- 
-}
-
 
    
       

@@ -4511,13 +4511,29 @@ textarea.form-control-lg {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 280px;
+  margin: 15px !important;
+  
+
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: solid 0.1px rgb(147, 140, 140);
   border-radius: 0.25rem;
 }
+.card > h2 {
+  font-size: 22px;
+  text-align: center !important;
+  
+}
+
+.boton-agregar{
+
+  border: solid 0.5x black;
+  margin: 20px;
+  padding: 5px;
+}
+
 .card > hr {
   margin-right: 0;
   margin-left: 0;
