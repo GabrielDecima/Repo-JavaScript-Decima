@@ -51,11 +51,21 @@ fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
       const total = carrito.reduce((acumulador,producto) => acumulador + producto.price, 0);
       document.getElementById("cart-total").innerHTML = `${carrito.length} - $ ${total}`;  
 
-
-      Swal.fire({
-         title: `Carrito: ${carrito.length} Productos` ,
-         html:`<div>Excelente! Agregaste tu nuevo par de zapatillas</div>`,
-   
+       const Toast = Swal.mixin({
+         toast: true,
+         position: 'top-end',
+         showConfirmButton: false,
+         timer: 3000,
+         timerProgressBar: true,
+         didOpen: (toast) => {
+           toast.addEventListener('mouseenter', Swal.stopTimer)
+           toast.addEventListener('mouseleave', Swal.resumeTimer)
+         }
+       })
+       
+       Toast.fire({
+         icon: 'success',
+         title: 'Agregaste una nueva Zapatilla'
        })
     
    })
@@ -65,46 +75,30 @@ fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
 
  })
 
+
+//  Boton para mostrar carrito //
+const mostrarCarrito = JSON.stringify(localStorage.getItem("carrito"))
  
+   
+   document.getElementById('boton-carrito').addEventListener('click', () =>{
+   
+      carrito.forEach((producto) => {
 
-   
-      
-   // while(nombreUsuario == ""){
-   
-   //     nombreUsuario= prompt("Ingrese nombre de usuario");
-       
-   
-   //     if (nombreUsuario != ""){
-   //       Swal.fire(
-   //          'Good job!',
-   //          'You clicked the button!',
-   //          'success'
-   //        )
+      // Swal.fire({
+      //    title: 'Carrito!',
+      //    text: 'hola',
+      //    imageUrl: 'https://unsplash.it/400/200',
+      //    imageWidth: 200,
+      //    imageHeight: 200,
+      //    html:`${mostrarCarrito.title}`
          
-   // }
-   //  else {
-   //     alert("No ingresaste un nombre, por favor volve, e ingresa un nombre");
-
-   //  }
-   // }
-   
-    
-
-
-       // ---------------------------------------------------------------------------
-   
-   // function validacionDatos (){    
-
-   //    Swal.fire({
-   //       title: 'Ingresar usuario',
-         
-   //       html:
-   //       '<span>Nombre <span/> <input id="swal-input1" class="swal2-input">' +
-   //           '<span>Email<span/><input id="swal-input2" class="swal2-input">',
-   //       icon: 'info',
-   //       confirmButtonText: 'Enviar'
-         
-   //       })      
       
-   //    }
-      
+      //  })
+
+   alert(mostrarCarrito);
+
+
+   })
+}
+ )
+ 
