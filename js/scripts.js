@@ -55,7 +55,7 @@ fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
          toast: true,
          position: 'top-end',
          showConfirmButton: false,
-         timer: 3000,
+         timer: 2000,
          timerProgressBar: true,
          didOpen: (toast) => {
            toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -80,6 +80,8 @@ fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
 
 
 document.getElementById('prueba2').addEventListener('click', () =>{
+
+document.getElementById("cuerpoCarrito").innerHTML="";
 
 carrito.forEach((producto) => {
    const idButtonEliminar = `add-cart-${producto.id}`
