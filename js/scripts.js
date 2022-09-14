@@ -77,28 +77,27 @@ fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
 
 
 //  Boton para mostrar carrito //
-const mostrarCarrito = JSON.stringify(localStorage.getItem("carrito"))
- 
-   
-   document.getElementById('boton-carrito').addEventListener('click', () =>{
-   
-      carrito.forEach((producto) => {
 
-      // Swal.fire({
-      //    title: 'Carrito!',
-      //    text: 'hola',
-      //    imageUrl: 'https://unsplash.it/400/200',
-      //    imageWidth: 200,
-      //    imageHeight: 200,
-      //    html:`${mostrarCarrito.title}`
-         
+
+document.getElementById('prueba2').addEventListener('click', () =>{
+
+carrito.forEach((producto) => {
+   const idButtonEliminar = `add-cart-${producto.id}`
+
+document.getElementById("cuerpoCarrito").innerHTML += `
+   <div class="p-3" style="border:solid 0.1px">
+    <tr>
+      <th scope="row">Precio: </th>
       
-      //  })
+      <td>$${producto.price}</td>
+      <img class="m-2"src="${producto.thumbnail}" style="border:solid 0.2px">
+      <td><button id=${idButtonEliminar}>Eliminar</button></td><br>
+    </tr>
+   </div>
+`
+})
 
-   alert(mostrarCarrito);
+
+})
 
 
-   })
-}
- )
- 
