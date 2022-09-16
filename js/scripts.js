@@ -11,7 +11,7 @@ const consultarDatosProducto = () => {
    let acumuladorCards = ``;
    informacion.results.forEach((producto) => {
 
-   console.log(informacion.results);
+   // console.log(informacion.results);
    const idButton = `add-cart-${producto.id}`
    acumuladorCards +=  `<div class= "card">
    <img src="${producto.thumbnail}">
@@ -79,7 +79,7 @@ fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
 //  Boton para mostrar carrito //
 
 
-document.getElementById('prueba2').addEventListener('click', () =>{
+document.getElementById('mostrarCarrito').addEventListener('click', () =>{
 
 document.getElementById("cuerpoCarrito").innerHTML="";
 
@@ -93,7 +93,7 @@ document.getElementById("cuerpoCarrito").innerHTML += `
       
       <td>$${producto.price}</td>
       <img class="m-2"src="${producto.thumbnail}" style="border:solid 0.2px">
-      <td><button id=${idButtonEliminar}>Eliminar</button></td><br>
+      <td><button id=${idButtonEliminar} onclick="eliminarCarrito()">Eliminar</button></td><br>
     </tr>
    </div>
 `
@@ -103,3 +103,13 @@ document.getElementById("cuerpoCarrito").innerHTML += `
 })
 
 
+function eliminarCarrito(){
+   
+   carrito.forEach((producto) => {
+   
+     
+
+
+})
+
+}
