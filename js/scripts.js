@@ -76,17 +76,22 @@ fetch('https://api.mercadolibre.com/sites/MLA/search?q=zapatillas')
  })
 
 
+
+
 //  Boton para mostrar carrito //
 
-
 document.getElementById('mostrarCarrito').addEventListener('click', () =>{
+
+   if(carrito.length<=0){
+      document.getElementById("cuerpoCarrito").innerHTML = `<div>   Tu carrito esta vacio 😞 </div>`
+   } else{
 
 document.getElementById("cuerpoCarrito").innerHTML="";
 
 carrito.forEach((producto) => {
    const idButtonEliminar = `add-cart-${producto.id}`
 
-document.getElementById("cuerpoCarrito").innerHTML += `
+let Elimin = document.getElementById("cuerpoCarrito").innerHTML += `
    <div class="p-3" style="border:solid 0.1px">
     <tr>
       <th scope="row">Precio: </th>
@@ -96,19 +101,40 @@ document.getElementById("cuerpoCarrito").innerHTML += `
       <td><button id=${idButtonEliminar} onclick="eliminarCarrito()">Eliminar</button></td><br>
     </tr>
    </div>
+
 `
 })
+}
+localStorage.setItem("carrito", JSON.stringify(carrito));
+localStorage.setItem("cantidadCarrito", JSON.stringify(carrito.length));
+const total = carrito.reduce((acumulador,producto) => acumulador + producto.price, 0);
+document.getElementById("cart-total").innerHTML = `${carrito.length} - $ ${total}`; 
+
+document.getElementById("pieModal").innerHTML=`<div class="d-flex p-2 flex-fill">Total Carrito: $ ${total}</div>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+<button type="button" class="btn btn-primary">Confirmar</button>`
 
 
 })
 
 
-function eliminarCarrito(){
-   
-   carrito.forEach((producto) => {
-   
-     
 
+
+
+// Función Eliminar Carrito 
+function eliminarCarrito(){
+  
+  
+   carrito.forEach((producto) => {
+      
+   carrito.splice(producto,1)
+   localStorage.setItem("carrito", JSON.stringify(carrito));
+   localStorage.setItem("cantidadCarrito", JSON.stringify(carrito.length));
+   const total = carrito.reduce((acumulador,producto) => acumulador + producto.price, 0);
+   document.getElementById("cart-total").innerHTML = `${carrito.length} - $ ${total}`;  
+   
+   document.getElementById("cuerpoCarrito").innerHTML= Elimin;
+   
 
 })
 
